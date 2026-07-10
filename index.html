@@ -1,1 +1,86 @@
-s
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#06090f">
+<title>TesterUp &ndash; Altersverifizierung</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#06090f !important;color-scheme:dark;}
+html,body{min-height:100vh;background:#06090f !important;background-color:#06090f !important;font-family:'DM Sans',sans-serif;color:#f1f5f9;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(249,115,22,0.15) 0%,transparent 60%),radial-gradient(ellipse 50% 35% at 50% 110%,rgba(168,85,247,0.08) 0%,transparent 60%);pointer-events:none;z-index:0;}
+
+.age-wrap{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;padding:40px 24px 48px;position:relative;z-index:1;text-align:center;animation:fadeUp 0.4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.logo-ring-wrap{position:relative;width:90px;height:90px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.logo-ring{position:absolute;width:104px;height:104px;border-radius:26px;border:2px solid rgba(249,115,22,0.25);animation:rPulse 2.5s ease-in-out infinite;}
+.logo-ring2{position:absolute;width:96px;height:96px;border-radius:24px;border:1.5px solid rgba(249,115,22,0.12);animation:rPulse 2.5s ease-in-out 0.5s infinite;}
+@keyframes rPulse{0%,100%{opacity:0.5;transform:scale(0.95)}50%{opacity:1;transform:scale(1.04)}}
+.logo-glow{position:absolute;width:90px;height:90px;border-radius:22px;background:radial-gradient(circle,rgba(249,115,22,0.3) 0%,transparent 70%);filter:blur(10px);animation:gPulse 2.5s ease-in-out infinite;}
+@keyframes gPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+.logo-img{width:86px;height:86px;border-radius:22px;object-fit:cover;display:block;position:relative;z-index:1;box-shadow:0 8px 28px rgba(0,0,0,0.5),0 0 20px rgba(249,115,22,0.2);animation:floatBob 4s ease-in-out infinite;}
+@keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.age-headline{font-family:'Sora',sans-serif;font-size:32px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:-0.5px;}
+.age-headline .ora{color:#f97316;}
+.age-sub{font-size:14px;color:#8da0b8;margin-bottom:26px;line-height:1.55;}
+
+.note-box{width:100%;background:#0c1220;border-radius:16px;border:1px solid rgba(249,115,22,0.18);padding:18px 18px;margin-bottom:26px;text-align:left;position:relative;overflow:hidden;}
+.note-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,0.5),transparent);}
+.note-label{font-size:11px;font-weight:800;color:#fb923c;text-transform:uppercase;letter-spacing:0.8px;display:flex;align-items:center;gap:6px;margin-bottom:14px;}
+.note-dot{width:7px;height:7px;border-radius:50%;background:#f97316;box-shadow:0 0 6px #f97316;flex-shrink:0;animation:dBlink 1.4s ease-in-out infinite;}
+@keyframes dBlink{0%,100%{opacity:1}50%{opacity:0.25}}
+.note-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+.note-item:last-child{margin-bottom:0;}
+.note-icon{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:1px;}
+.note-icon.info{background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;}
+.note-icon.check{background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#22c55e;}
+.note-text{font-size:13px;color:#8da0b8;line-height:1.5;}
+.note-text strong{color:#f1f5f9;}
+
+.btn-yes{width:100%;padding:19px;border-radius:14px;background:linear-gradient(135deg,#ea580c,#f97316,#fb923c);color:#fff;font-family:'Sora',sans-serif;font-size:16px;font-weight:800;border:none;cursor:pointer;margin-bottom:10px;box-shadow:0 0 28px rgba(249,115,22,0.5),0 4px 16px rgba(0,0,0,0.4);animation:yesPulse 2.8s ease-in-out infinite;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;transition:all 0.2s ease;}
+.btn-yes::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);animation:shine 3s linear 1.5s infinite;}
+@keyframes shine{0%{left:-60%}100%{left:160%}}
+@keyframes yesPulse{0%,100%{box-shadow:0 0 28px rgba(249,115,22,0.5),0 4px 16px rgba(0,0,0,0.4);}50%{box-shadow:0 0 46px rgba(249,115,22,0.7),0 4px 16px rgba(0,0,0,0.4);}}
+.btn-yes:hover{transform:translateY(-1px) scale(1.01);animation:none;}
+.btn-yes:active{transform:scale(0.98);animation:none;}
+
+.btn-no{width:100%;padding:17px;border-radius:14px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.1);color:#8da0b8;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s ease;-webkit-tap-highlight-color:transparent;}
+.btn-no:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.2);}
+</style>
+</head>
+<body>
+<div class="age-wrap">
+
+  <div class="logo-ring-wrap">
+    <div class="logo-ring"></div>
+    <div class="logo-ring2"></div>
+    <div class="logo-glow"></div>
+    <img class="logo-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="TesterUp">
+  </div>
+
+  <div class="age-headline">Bist du <span class="ora">21+</span>?</div>
+  <div class="age-sub">Bestätige dein Alter, um verfügbare Prämienangebote freizuschalten.</div>
+
+  <div class="note-box">
+    <div class="note-label"><div class="note-dot"></div> Bitte beachten</div>
+    <div class="note-item">
+      <div class="note-icon info">&#9432;</div>
+      <div class="note-text">Du musst mindestens <strong>21 Jahre alt</strong> sein, um auf die verfügbaren Prämienangebote zugreifen zu können.</div>
+    </div>
+    <div class="note-item">
+      <div class="note-icon check">&#10003;</div>
+      <div class="note-text">Bereits registriert? <strong>Erstelle über diese Seite ein neues Konto</strong> &mdash; bestehende Konten sind nicht für den Willkommensbonus berechtigt.</div>
+    </div>
+  </div>
+
+  <button class="btn-yes" onclick="window.location.href='https://testerupde.rwrd.workers.dev/'">Ja, ich bin 18+ &rarr;</button>
+  <button class="btn-no" onclick="window.location.href='https://testerupde.rwrd.workers.dev/'">Nein, ich bin unter 18</button>
+
+</div>
+</body>
+</html>
